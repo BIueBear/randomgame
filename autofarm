@@ -178,7 +178,7 @@ function kill()
             Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
             wait()
             x = x+1
-        until x > 5
+        until x > 2
     end
 end
 while wait() do
