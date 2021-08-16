@@ -43,6 +43,13 @@ function kill()
             VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
             wait()
         until game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == false or ScriptOn == false
+    elseif game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") then
+        repeat
+            local Gui = game:GetService("Players").LocalPlayer.PlayerGui.WaveHUD.WaveCompleted.LobbyLabel.Frame.Return
+            VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,true,game,0)
+            VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
+            wait()
+        until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or ScriptOn == false
     end
     local Char = game:GetService("Players").LocalPlayer.Character
     local TargetInfo = FoundTarget()
@@ -152,7 +159,7 @@ function kill()
         wait()
         tween:Play()
         Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-    until TargetInfo[1][3].Humanoid.Health == 0 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == true or ScriptOn == false
+    until TargetInfo[1][3].Humanoid.Health == 0 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == true or ScriptOn == false
     local x = 0
     repeat
         local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
