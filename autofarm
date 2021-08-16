@@ -35,6 +35,10 @@ function FoundTarget()
     end)
     return Target
 end
+local loadingscreen = game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("ScreenPan")
+repeat
+    wait(1)
+until loadingscreen.SkipPan.Visible == false
 function kill()
     if game:GetService("Players").LocalPlayer.PlayerGui.Main.Death.Visible == false then
         if game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == true then
