@@ -36,88 +36,121 @@ function FoundTarget()
     return Target
 end
 function kill()
-    if game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == true then
-        repeat
-            local Gui = game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Label.Frame.Return
-            VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,true,game,0)
-            VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
-            wait()
-        until game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == false or ScriptOn == false
-    elseif game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") then
-        repeat
-            local Gui = game:GetService("Players").LocalPlayer.PlayerGui.WaveHUD.WaveCompleted.LobbyLabel.Frame.Return
-            VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,true,game,0)
-            VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
-            wait()
-        until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or ScriptOn == false
-    end
-    local Char = game:GetService("Players").LocalPlayer.Character
-    local TargetInfo = FoundTarget()
-    local EnemyLocation = TargetInfo[1][3].Hitboxes.Nape
-    local data = game:GetService("Players").LocalPlayer.Data
-    local workspacee = game:GetService("Workspace")
-    if game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == true then
-        repeat
-            local Gui = game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Label.Frame.Return
-            VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,true,game,0)
-            VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
-            wait()
-        until game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == false or ScriptOn == false
-    end
-    if data.BladesLeft.Value == 0 and data.BladeDurability.Value == 0 then
-        for _,v in pairs(game:GetService("Workspace").SupplyStations:GetChildren()) do
-            if v.Name == "Blades" and v.BladesLeft.Value > 0 then
-                repeat
-                    local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
-                    local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).magnitude
-                    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new((distance/_G.Speed), Enum.EasingStyle.Linear)
-                    tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = v.CFrame + Vector3.new(0,3,0)})
-                    tween:Play()
-                    Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-                    wait()
-                    VIM:SendKeyEvent(true,Enum.KeyCode.T,false,game)
-                until data.BladesLeft.Value ~= 0 or v.BladesLeft.Value < 0 or v.BladesLeft.Value == 0 or ScriptOn == false
+    if game:GetService("Players").LocalPlayer.PlayerGui.Main.Death.Visible == false then
+        if game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == true then
+            repeat
+                local Gui = game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Label.Frame.Return
+                VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,true,game,0)
+                VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
+                wait()
+            until game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == false or ScriptOn == false
+        elseif game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") then
+            repeat
+                local Gui = game:GetService("Players").LocalPlayer.PlayerGui.WaveHUD.WaveCompleted.LobbyLabel.Frame.Return
+                VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,true,game,0)
+                VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
+                wait()
+            until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or ScriptOn == false
+        end
+        local Char = game:GetService("Players").LocalPlayer.Character
+        local TargetInfo = FoundTarget()
+        local EnemyLocation = TargetInfo[1][3].Hitboxes.Nape
+        local data = game:GetService("Players").LocalPlayer.Data
+        local workspacee = game:GetService("Workspace")
+        if game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == true then
+            repeat
+                local Gui = game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Label.Frame.Return
+                VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,true,game,0)
+                VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
+                wait()
+            until game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == false or ScriptOn == false
+        elseif game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") then
+            repeat
+                local Gui = game:GetService("Players").LocalPlayer.PlayerGui.WaveHUD.WaveCompleted.LobbyLabel.Frame.Return
+                VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,true,game,0)
+                VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
+                wait()
+            until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or ScriptOn == false
+        end
+        if data.BladesLeft.Value == 0 and data.BladeDurability.Value == 0 then
+            for _,v in pairs(game:GetService("Workspace").SupplyStations:GetChildren()) do
+                if v.Name == "Blades" and v.BladesLeft.Value > 0 then
+                    repeat
+                        local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
+                        local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position).magnitude
+                        tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new((distance/_G.Speed), Enum.EasingStyle.Linear)
+                        tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = v.CFrame + Vector3.new(0,3,0)})
+                        tween:Play()
+                        Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
+                        wait()
+                        VIM:SendKeyEvent(true,Enum.KeyCode.T,false,game)
+                    until data.BladesLeft.Value ~= 0 or v.BladesLeft.Value < 0 or v.BladesLeft.Value == 0 or ScriptOn == false
+                end
             end
         end
-    end
-    if not Char:FindFirstChild("RightBlade") then
-        VIM:SendKeyEvent(true,Enum.KeyCode.F,false,game)
-        wait()
-        VIM:SendKeyEvent(false,Enum.KeyCode.F,false,game)
-    end
-    if data.BladeDurability.Value == 0 and data.BladesLeft.Value ~= 0 and Char:FindFirstChild("LeftBlade") then
-        local x = 0
-        VIM:SendKeyEvent(true,Enum.KeyCode.R,false,game)
-        wait()
-        VIM:SendKeyEvent(false,Enum.KeyCode.R,false,game)
+        if not Char:FindFirstChild("RightBlade") then
+            VIM:SendKeyEvent(true,Enum.KeyCode.F,false,game)
+            wait()
+            VIM:SendKeyEvent(false,Enum.KeyCode.F,false,game)
+        end
+        if data.BladeDurability.Value == 0 and data.BladesLeft.Value ~= 0 and Char:FindFirstChild("LeftBlade") then
+            local x = 0
+            VIM:SendKeyEvent(true,Enum.KeyCode.R,false,game)
+            wait()
+            VIM:SendKeyEvent(false,Enum.KeyCode.R,false,game)
+            repeat
+                local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
+                local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - EnemyLocation.Position).magnitude
+                tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new((distance/_G.Speed), Enum.EasingStyle.Linear)
+                tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(0,60,0)})
+                tween:Play()
+                Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
+                wait()
+                x = x+1
+            until x == 50
+        end
         repeat
             local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
             local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - EnemyLocation.Position).magnitude
             tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new((distance/_G.Speed), Enum.EasingStyle.Linear)
-            tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(0,60,0)})
+            tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(0,0,5)})
             tween:Play()
             Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
             wait()
-            x = x+1
-        until x == 50
-    end
-    repeat
-        local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
-        local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - EnemyLocation.Position).magnitude
-        tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new((distance/_G.Speed), Enum.EasingStyle.Linear)
-        tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(0,0,5)})
-        tween:Play()
-        Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-        wait()
-    until (Char.HumanoidRootPart.Position-EnemyLocation.Position).Magnitude < 20 or data.BladeDurability.Value == 0 or ScriptOn == false
-    if TargetInfo[1][3].Name == "Annie" and done == false and not workspacee.Live:FindFirstChild("Annie") then
-        local EnemyLocation = TargetInfo[1][3].Hitboxes.Eyes
+        until (Char.HumanoidRootPart.Position-EnemyLocation.Position).Magnitude < 20 or data.BladeDurability.Value == 0 or ScriptOn == false
+        if TargetInfo[1][3].Name == "Annie" and done == false and not workspacee.Live:FindFirstChild("Annie") then
+            local EnemyLocation = TargetInfo[1][3].Hitboxes.Eyes
+            repeat
+                local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
+                local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - EnemyLocation.Position).magnitude
+                local TargetPosition = camera:WorldToScreenPoint(EnemyLocation.Position)
+                tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new((distance/_G.Speed), Enum.EasingStyle.Linear)
+                tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(0,0,2)})
+                tween:Play()
+                Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
+                VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,true,game,0)
+                VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,false,game,0)
+                wait()
+                tween:Play()
+                Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
+                wait()
+                tween:Play()
+                Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
+                wait()
+                tween:Play()
+                Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
+                wait()
+                tween:Play()
+                Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
+                done = true
+            until (Char.HumanoidRootPart.Position-EnemyLocation.Position).Magnitude < 15 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or ScriptOn == false
+        end
         repeat
+            if TargetInfo[1][3].Name == "Annie" and workspacee.Live:FindFirstChild("Annie") then break end
             local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
             local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - EnemyLocation.Position).magnitude
-            local TargetPosition = camera:WorldToScreenPoint(EnemyLocation.Position)
             tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new((distance/_G.Speed), Enum.EasingStyle.Linear)
-            tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(0,0,2)})
+            tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(EnemyLocation.Position + Vector3.new(0,0,0.2), (EnemyLocation.Position))})
             tween:Play()
             Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
             VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,true,game,0)
@@ -134,43 +167,19 @@ function kill()
             wait()
             tween:Play()
             Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-            done = true
-        until (Char.HumanoidRootPart.Position-EnemyLocation.Position).Magnitude < 15 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or ScriptOn == false
+        until TargetInfo[1][3].Humanoid.Health == 0 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == true or game:GetService("Players").LocalPlayer.PlayerGui.Main.Death.Visible == true or ScriptOn == false
+        local x = 0
+        repeat
+            local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
+            local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - EnemyLocation.Position).magnitude
+            tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new((distance/400), Enum.EasingStyle.Linear)
+            tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(0,60,0)})
+            tween:Play()
+            Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
+            wait()
+            x = x+1
+        until x > 5
     end
-    repeat
-        if TargetInfo[1][3].Name == "Annie" and workspacee.Live:FindFirstChild("Annie") then break end
-        local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
-        local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - EnemyLocation.Position).magnitude
-        tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new((distance/_G.Speed), Enum.EasingStyle.Linear)
-        tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(EnemyLocation.Position + Vector3.new(0,0,0.2), (EnemyLocation.Position))})
-        tween:Play()
-        Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-        VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,true,game,0)
-        VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,false,game,0)
-        wait()
-        tween:Play()
-        Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-        wait()
-        tween:Play()
-        Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-        wait()
-        tween:Play()
-        Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-        wait()
-        tween:Play()
-        Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-    until TargetInfo[1][3].Humanoid.Health == 0 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == true or ScriptOn == false
-    local x = 0
-    repeat
-        local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
-        local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - EnemyLocation.Position).magnitude
-        tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new((distance/400), Enum.EasingStyle.Linear)
-        tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(0,60,0)})
-        tween:Play()
-        Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-        wait()
-        x = x+1
-    until x > 5
 end
 while wait() do
     if ScriptOn == true then
