@@ -4,7 +4,7 @@ local VirtualUser=game:service'VirtualUser'
 local VIM = game:GetService("VirtualInputManager")
 local camera = game.workspace.Camera
 local done = false
-_G.Speed = 200
+_G.Speed = 400
 game:service'Players'.LocalPlayer.Idled:connect(function()
 VirtualUser:CaptureController()
 VirtualUser:ClickButton2(Vector2.new())
