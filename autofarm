@@ -124,6 +124,7 @@ function kill()
         until (Char.HumanoidRootPart.Position-EnemyLocation.Position).Magnitude < 40 or data.BladeDurability.Value == 0 or ScriptOn == false
         if TargetInfo[1][3].Name == "Annie" and done == false and not workspacee.Live:FindFirstChild("Annie") then
             local EnemyLocation = TargetInfo[1][3].Hitboxes.Eyes
+            local x = 0
             repeat
                 local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
                 local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - EnemyLocation.Position).magnitude
@@ -147,7 +148,8 @@ function kill()
                 tween:Play()
                 Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
                 done = true
-            until (Char.HumanoidRootPart.Position-EnemyLocation.Position).Magnitude < 5 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or ScriptOn == false
+                x = x+1
+            until x = 10 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or ScriptOn == false
         end
         repeat
             if TargetInfo[1][3].Name == "Annie" and workspacee.Live:FindFirstChild("Annie") then break end
