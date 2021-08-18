@@ -151,17 +151,19 @@ function kill()
                 tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(0,-4,0)})
                 tween:Play()
                 Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-                VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,true,game,0)
-                VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,false,game,0)
-                wait()
-                tween:Play()
-                Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-                wait()
-                tween:Play()
-                Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-                wait()
-                tween:Play()
-                Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
+                local A_1 = 
+                {
+                    [1] = "StartSwing", 
+                    [2] = "à¶ž"
+                }
+                local Event = game:GetService("ReplicatedStorage").Remotes.ODM
+                Event:FireServer(A_1)
+                local A_1 = 
+                {
+                    [1] = "EndSwing", 
+                    [2] = "à¶ž"
+                }
+                Event:FireServer(A_1)
                 wait()
                 tween:Play()
                 Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
@@ -176,17 +178,19 @@ function kill()
             tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(0,-4,0)})
             tween:Play()
             Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-            VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,true,game,0)
-            VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,false,game,0)
-            wait()
-            tween:Play()
-            Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-            wait()
-            tween:Play()
-            Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-            wait()
-            tween:Play()
-            Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
+            local A_1 = 
+            {
+                [1] = "StartSwing", 
+                [2] = "à¶ž"
+            }
+            local Event = game:GetService("ReplicatedStorage").Remotes.ODM
+            Event:FireServer(A_1)
+            local A_1 = 
+            {
+                [1] = "EndSwing", 
+                [2] = "à¶ž"
+            }
+            Event:FireServer(A_1)
             wait()
             tween:Play()
             Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
