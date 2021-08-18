@@ -196,6 +196,7 @@ function kill()
             wait(1)
             VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,true,game,0)
             VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,false,game,0)
+            wait(1)
             if Game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Spinning Slash") then
                 AutoEquip("Spinning Slash")
                 wait(1)
