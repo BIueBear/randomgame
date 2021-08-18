@@ -87,6 +87,11 @@ function kill()
                 VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
                 wait()
             until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or ScriptOn == false
+        elseif loadingscreen.SkipPan.Visible == true then
+            repeat
+                wait(1)
+                Char.HumanoidRootPart.CFrame = Char.HumanoidRootPart.CFrame
+            until loadingscreen.SkipPan.Visible == false
         end
         if data.BladesLeft.Value == 0 and data.BladeDurability.Value == 0 then
             for _,v in pairs(game:GetService("Workspace").SupplyStations:GetChildren()) do
@@ -133,7 +138,7 @@ function kill()
             tween:Play()
             Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
             wait()
-        until (Char.HumanoidRootPart.Position-EnemyLocation.Position).Magnitude < 70 or data.BladeDurability.Value == 0 or ScriptOn == false
+        until (Char.HumanoidRootPart.Position-EnemyLocation.Position).Magnitude < 70 or data.BladeDurability.Value == 0 or loadingscreen.SkipPan.Visible == true or ScriptOn == false
         if TargetInfo[1][3].Name == "Annie" and not workspacee.Live:FindFirstChild("Annie") then
             local EnemyLocation = TargetInfo[1][3].Hitboxes.Eyes
             local x = 0
@@ -160,7 +165,7 @@ function kill()
                 tween:Play()
                 Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
                 x = x+1
-            until x == 5 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or ScriptOn == false
+            until x == 5 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or loadingscreen.SkipPan.Visible == true or ScriptOn == false
         end
         repeat
             if TargetInfo[1][3].Name == "Annie" and workspacee.Live:FindFirstChild("Annie") then break end
@@ -184,7 +189,7 @@ function kill()
             wait()
             tween:Play()
             Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
-        until TargetInfo[1][3].Humanoid.Health == 0 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == true or game:GetService("Players").LocalPlayer.PlayerGui.Main.Death.Visible == true or TargetInfo[1][3].Grabbing.Value ~= nil or ScriptOn == false
+        until TargetInfo[1][3].Humanoid.Health == 0 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or loadingscreen.SkipPan.Visible == true or game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == true or game:GetService("Players").LocalPlayer.PlayerGui.Main.Death.Visible == true or TargetInfo[1][3].Grabbing.Value ~= nil or ScriptOn == false
         if TargetInfo[1][3].Grabbing.Value ~= nil and Game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Hand Grinder") then
             AutoEquip("Hand Grinder")
             wait(1)
