@@ -147,7 +147,7 @@ function kill()
                 local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - EnemyLocation.Position).magnitude
                 local TargetPosition = camera:WorldToScreenPoint(EnemyLocation.Position)
                 tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new((distance/_G.Speed), Enum.EasingStyle.Linear)
-                tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(0,-2,-5)})
+                tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(-2,-2,-2)})
                 tween:Play()
                 Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
                 VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,true,game,0)
@@ -172,7 +172,7 @@ function kill()
             local Char1 = game:service('Players').LocalPlayer.Character.HumanoidRootPart
             local distance = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - EnemyLocation.Position).magnitude
             tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new((distance/_G.Speed), Enum.EasingStyle.Linear)
-            tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(0,-2,-5)})
+            tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = EnemyLocation.CFrame + Vector3.new(-2,-2,-2)})
             tween:Play()
             Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
             VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,true,game,0)
