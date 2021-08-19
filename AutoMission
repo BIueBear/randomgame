@@ -168,7 +168,7 @@ else
                 tween:Play()
                 Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
                 wait()
-            until (Char.HumanoidRootPart.Position-EnemyLocation.Position).Magnitude < 5 or data.BladeDurability.Value == 0 or loadingscreen.SkipPan.Visible == true or ScriptOn == false
+            until (Char.HumanoidRootPart.Position-EnemyLocation.Position).Magnitude < 15 or data.BladeDurability.Value == 0 or loadingscreen.SkipPan.Visible == true or ScriptOn == false
             if TargetInfo[1][3].Name == "Annie" and not workspacee.Live:FindFirstChild("Annie") then
                 local EnemyLocation = TargetInfo[1][3].Hitboxes.Eyes
                 local x = 0
