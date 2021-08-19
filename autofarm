@@ -67,11 +67,11 @@ function kill()
                 VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
                 wait()
             until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or ScriptOn == false
-        elseif loadingscreen.SkipPan.Visible == true then
+        elseif game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("ScreenPan").SkipPan.Visible == true then
             repeat
                 wait(1)
                 Char.HumanoidRootPart.CFrame = Char.HumanoidRootPart.CFrame + Vector3.new(0,5,0)
-            until loadingscreen.SkipPan.Visible == false
+            until game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("ScreenPan").SkipPan.Visible == false
         end
         local Char = game:GetService("Players").LocalPlayer.Character
         local TargetInfo = FoundTarget()
@@ -93,11 +93,11 @@ function kill()
                 VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
                 wait()
             until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or ScriptOn == false
-        elseif loadingscreen.SkipPan.Visible == true then
+        elseif  game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("ScreenPan").SkipPan.Visible == true then
             repeat
                 wait(1)
                 Char.HumanoidRootPart.CFrame = Char.HumanoidRootPart.CFrame + Vector3.new(0,5,0)
-            until loadingscreen.SkipPan.Visible == false
+            until game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("ScreenPan").SkipPan.Visible == false
         end
         if data.BladesLeft.Value == 0 and data.BladeDurability.Value == 0 then
             for _,v in pairs(game:GetService("Workspace").SupplyStations:GetChildren()) do
