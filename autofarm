@@ -67,6 +67,11 @@ function kill()
                 VIM:SendMouseButtonEvent(Gui.AbsolutePosition.X + 40,Gui.AbsolutePosition.Y + 40,0,false,game,0)
                 wait()
             until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or ScriptOn == false
+        elseif loadingscreen.SkipPan.Visible == true then
+            repeat
+                wait(1)
+                Char.HumanoidRootPart.CFrame = Char.HumanoidRootPart.CFrame + Vector3.new(0,5,0)
+            until loadingscreen.SkipPan.Visible == false
         end
         local Char = game:GetService("Players").LocalPlayer.Character
         local TargetInfo = FoundTarget()
@@ -91,7 +96,7 @@ function kill()
         elseif loadingscreen.SkipPan.Visible == true then
             repeat
                 wait(1)
-                Char.HumanoidRootPart.CFrame = Char.HumanoidRootPart.CFrame
+                Char.HumanoidRootPart.CFrame = Char.HumanoidRootPart.CFrame + Vector3.new(0,5,0)
             until loadingscreen.SkipPan.Visible == false
         end
         if data.BladesLeft.Value == 0 and data.BladeDurability.Value == 0 then
@@ -191,9 +196,13 @@ function kill()
                 [2] = "à¶ž"
             }
             Event:FireServer(A_1)
+            AutoEquip("Hand Grinder")
             wait()
             tween:Play()
             Char1.Parent:findFirstChildOfClass("Humanoid"):ChangeState(11)
+            VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,true,game,0)
+            VIM:SendMouseButtonEvent(workspacee.CurrentCamera.ViewportSize.X / 2, workspacee.CurrentCamera.ViewportSize.Y / 2,0,false,game,0)
+            Char.Humanoid:UnequipTools()
         until TargetInfo[1][3].Humanoid.Health == 0 or Char.Humanoid.Health == 0 or data.BladeDurability.Value == 0 or not Char:FindFirstChild("RightBlade") or loadingscreen.SkipPan.Visible == true or game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("WaveHUD") or game:GetService("Players").LocalPlayer.PlayerGui.Main.MissionCompleted.Visible == true or game:GetService("Players").LocalPlayer.PlayerGui.Main.Death.Visible == true or TargetInfo[1][3].Grabbing.Value ~= nil or ScriptOn == false
         if TargetInfo[1][3].Grabbing.Value ~= nil and Game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Hand Grinder") then
             AutoEquip("Hand Grinder")
