@@ -264,7 +264,7 @@ else
     end
     while wait() do
         if ScriptOn == true then
-            pcall(kill)
+            kill()
         end
     end
 end
